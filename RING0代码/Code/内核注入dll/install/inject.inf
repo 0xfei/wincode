@@ -1,0 +1,102 @@
+;--------------------------------------------------------------------------------
+; Kernel Inject Dll
+; Run by "net start inject"
+;  Mainly from Sergey Storozhevykh
+;  MengXP review 2014
+;--------------------------------------------------------------------------------
+
+[Version]
+Signature   ="$Windows NT$"
+Provider    = %Provider%
+DriverVer   = 01/03/2014,1.0.0.0
+
+;[Manufacturer] 
+;%SS% = SS, NTamd64
+
+;[SS]
+;%InjectDllSampleName% = Install.I386
+
+;[SS.NTamd64]
+;%InjectDllSampleName% = Install.Amd64
+
+[DestinationDirs]
+DefaultDestDir           = 12
+Inject.DriverFiles       = 12            ;%windir%\system32\drivers
+Inject.LoaderFiles       = 11            ;%windir%\system32
+Inject.DriverFiles.Amd64 = 12            ;%windir%\system32\drivers
+Inject.LoaderFiles.Amd64 = 11            ;%windir%\system32
+Inject.LoaderFiles.Wow64 = 16425         ;%windir%\SysWOW64
+
+;;
+;; Default install sections
+;;
+
+[DefaultInstall]
+OptionDesc          = %ServiceDescription%
+CopyFiles           = Inject.DriverFiles, Inject.LoaderFiles
+
+[DefaultInstall.Services]
+AddService          = %DriverName%,,Inject.Service
+
+[DefaultInstall.NTamd64]
+OptionDesc          = %ServiceDescription%
+CopyFiles           = Inject.DriverFiles.Amd64, Inject.LoaderFiles.Amd64, Inject.LoaderFiles.Wow64
+
+[DefaultInstall.NTamd64.Services]
+AddService          = %DriverName%,,Inject.Service
+
+;;
+;; Default uninstall sections
+;;
+
+[DefaultUninstall]
+DelFiles   = Inject.DriverFiles, Inject.LoaderFiles, Inject.LoaderFiles.Wow64
+
+[DefaultUninstall.Services]
+DelService = %DriverName%,0x200      ;Ensure service is stopped before deleting
+
+;
+; Services Section
+;
+
+[Inject.Service]
+DisplayName      = %InjectDllSampleName%
+Description      = %ServiceDescription%
+ServiceBinary    = %12%\%DriverName%.sys        ;%windir%\system32\drivers\
+ServiceType      = 1                            ;SERVICE_KERNEL_DRIVER
+StartType        = 3                            ;SERVICE_DEMAND_START
+ErrorControl     = 1                            ;SERVICE_ERROR_NORMAL
+
+;
+; Copy Files
+;
+
+[Inject.DriverFiles]
+%DriverName%.sys,\i386\%DriverName%.sys,,2
+
+[Inject.LoaderFiles]
+%LdrName%.dll,\i386\%LdrName%.dll,,2
+%DllToLoadName%.dll,\i386\%DllToLoadName%.dll,,2
+
+[Inject.DriverFiles.Amd64]
+%DriverName%.sys,\amd64\%DriverName%.sys,,2
+
+[Inject.LoaderFiles.Amd64]
+%LdrName%.dll,\amd64\%LdrName%.dll,,2
+%DllToLoadName%.dll,\amd64\%DllToLoadName%.dll,,2
+
+[Inject.LoaderFiles.Wow64]
+%LdrName%.dll,\i386\%LdrName%.dll,,2
+%DllToLoadName%.dll,\i386\%DllToLoadName%.dll,,2
+
+;;
+;; String Section
+;;
+
+[Strings]
+Provider                = "Sergey Storozhevykh"
+ServiceDescription      = "Forces Dll Injection"
+InjectDllSampleName     = "Inject Dll Sample"
+DriverName              = "inject"
+LdrName                 = "thunk"
+DllToLoadName           = "inject"

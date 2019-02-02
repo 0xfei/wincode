@@ -1,0 +1,14 @@
+#include <windows.h>
+
+#include <ntverp.h>
+
+#define	VER_FILETYPE			VFT_DRV
+#define	VER_FILESUBTYPE			VFT2_DRV_SYSTEM
+#define VER_FILEDESCRIPTION_STR     	"PortTalk - Beyond Logic I/O Port Driver"
+#define VER_INTERNALNAME_STR        	"PortTalk.sys"
+#define VER_ORIGINALFILENAME_STR    	"PortTalk.sys"
+#define VER_LEGALCOPYRIGHT_STR      	"Craig.Peacock@beyondlogic.org"
+#define VER_COMPANYNAME_STR         	"Beyond Logic http://www.beyondlogic.org"
+#define VER_PRODUCTNAME_STR         	"PortTalk Driver"
+
+#include "common.ver"

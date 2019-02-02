@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "drv", "drv\drv.vcxproj", "{E192AC4B-5387-4D20-94CD-DBB7089793CB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "thunk", "thunk\thunk.vcxproj", "{FCE27197-96A1-4FB4-B92C-3503724230A3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dll", "dll\dll.vcxproj", "{6F26AC5D-83F5-4C1B-9B86-AA20B1DC2BB7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E192AC4B-5387-4D20-94CD-DBB7089793CB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E192AC4B-5387-4D20-94CD-DBB7089793CB}.Debug|Win32.Build.0 = Debug|Win32
+		{E192AC4B-5387-4D20-94CD-DBB7089793CB}.Release|Win32.ActiveCfg = Release|Win32
+		{E192AC4B-5387-4D20-94CD-DBB7089793CB}.Release|Win32.Build.0 = Release|Win32
+		{FCE27197-96A1-4FB4-B92C-3503724230A3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FCE27197-96A1-4FB4-B92C-3503724230A3}.Debug|Win32.Build.0 = Debug|Win32
+		{FCE27197-96A1-4FB4-B92C-3503724230A3}.Release|Win32.ActiveCfg = Release|Win32
+		{FCE27197-96A1-4FB4-B92C-3503724230A3}.Release|Win32.Build.0 = Release|Win32
+		{6F26AC5D-83F5-4C1B-9B86-AA20B1DC2BB7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6F26AC5D-83F5-4C1B-9B86-AA20B1DC2BB7}.Debug|Win32.Build.0 = Debug|Win32
+		{6F26AC5D-83F5-4C1B-9B86-AA20B1DC2BB7}.Release|Win32.ActiveCfg = Release|Win32
+		{6F26AC5D-83F5-4C1B-9B86-AA20B1DC2BB7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
